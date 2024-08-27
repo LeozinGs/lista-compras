@@ -1,8 +1,12 @@
 .list_container {
-    background-color: papayawhip;
+    background-color: var(--clr-list-background);
     border-radius: 10px;
     flex: 1 1 auto;
-    color: #2e2e2e;
+    color: var(--clr-black);
+
+    -webkit-box-shadow: -17px 18px 9px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -17px 18px 9px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -17px 18px 9px -10px rgba(0, 0, 0, 0.75);
 }
 
 .title_list {
@@ -24,17 +28,22 @@
 }
 
 hr {
-    border: 1px solid #2e2e2e;
+    border: 1px solid var(--clr-black);
     margin: .5rem .5rem 2rem .5rem;
 }
 
 .menu_list {
-    background: #3f0125;
-    border: 2px solid #290524;
+    background: var(--clr-black-menu);
+
+    -webkit-box-shadow: -17px 18px 9px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -17px 18px 9px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -17px 18px 9px -10px rgba(0, 0, 0, 0.75);
+
     border-radius: 10px;
     padding: 2rem;
     position: absolute;
     right: 5px;
+    
     visibility: hidden;
 }
 

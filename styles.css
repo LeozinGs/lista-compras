@@ -3,7 +3,10 @@
 :root {
     --font-family: "Poppins";
     --clr-white: #f3f3f3;
-    --clr-text: #EBD3F8;
+    --clr-text: rgb(252, 249, 244);
+    --clr-black: #222222;
+    --clr-black-menu: #3a3a3a;
+    --clr-list-background: papayawhip;
 }
 
 body {
@@ -11,23 +14,30 @@ body {
     min-height: 100vh;
     font-size: 16px;
     font-weight: 400;
-    padding: 1rem;
-    background: linear-gradient(180deg, rgba(46, 7, 63, 1) 27%, rgba(173, 73, 225, 1) 93%);
+    padding: 1.5rem;
+    background: var(--clr-black);
     background-repeat: no-repeat;
     color: var(--clr-text);
 }
 
 .box_container {
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-flow: column;
 }
 
 .title {
-    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
     font-weight: 600;
     text-align: center;
     padding-bottom: 3rem;
+}
+
+.shop_cart {
+    font-size: 35px;
 }
 
 .description_container {

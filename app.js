@@ -29,50 +29,50 @@ function renderizarLista() {
 
 // Adiciona o item à lista
 function adicionarItemNaLista() {
-    if (input.value == '' || input.value == null) {
-        alert('Preencha o campo com algum item válido');
-    } else {
+    if (input.value != ' ' && input.value != '') {
         listaDeCompras.push(input.value.charAt(0).toUpperCase() + input.value.slice(1));
         localStorage.setItem('lista', JSON.stringify(listaDeCompras));
         input.value = '';
         renderizarLista();
+    } else {
+        alert('Preencha o campo com algum item válido');
     }
 }
 
-// Limpa a lista de compras
-function limparListaDeCompras() {
-    localStorage.setItem('lista', JSON.stringify([]));
-    input.value = '';
-    list.innerHTML = '';
-    listaDeCompras = [];
-}
-
-// Deleta o item clicado
-function deletarItem(event) {
-    if (event.target.classList.contains('delete')) {
-        const index = event.target.getAttribute('data-index');
-        listaDeCompras.splice(index, 1);
-        localStorage.setItem('lista', JSON.stringify(listaDeCompras));
-        renderizarLista();
+    // Limpa a lista de compras
+    function limparListaDeCompras() {
+        localStorage.setItem('lista', JSON.stringify([]));
+        input.value = '';
+        list.innerHTML = '';
+        listaDeCompras = [];
     }
-}
 
-// Eventos
-btnAdd.addEventListener('click', () => {
-    adicionarItemNaLista();
-    console.log(listaDeCompras);
-});
+    // Deleta o item clicado
+    function deletarItem(event) {
+        if (event.target.classList.contains('delete')) {
+            const index = event.target.getAttribute('data-index');
+            listaDeCompras.splice(index, 1);
+            localStorage.setItem('lista', JSON.stringify(listaDeCompras));
+            renderizarLista();
+        }
+    }
 
-btnClear.addEventListener('click', () => {
-    limparListaDeCompras();
-    console.log(listaDeCompras);
-});
+    // Eventos
+    btnAdd.addEventListener('click', () => {
+        adicionarItemNaLista();
+        console.log(listaDeCompras);
+    });
 
-list.addEventListener('click', deletarItem);
+    btnClear.addEventListener('click', () => {
+        limparListaDeCompras();
+        console.log(listaDeCompras);
+    });
 
-menu.addEventListener('click', () => {
-    menuList.classList.toggle('active');
-});
+    list.addEventListener('click', deletarItem);
 
-// Renderiza a lista inicial ao carregar a página
-renderizarLista();
+    menu.addEventListener('click', () => {
+        menuList.classList.toggle('active');
+    });
+
+    // Renderiza a lista inicial ao carregar a página
+    renderizarLista();
