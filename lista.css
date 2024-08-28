@@ -48,29 +48,30 @@ hr {
     padding: 2rem;
     position: absolute;
     right: 5px;
+    width: 150px;
     
     visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 200ms ease-in-out;
 }
 
 .menu_list.active {
     visibility: visible;
+    opacity: 1;
+    transform: translateY(-45px);
 }
 
-.menu_btn {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-decoration: none;
-    color: var(--clr-white);
+.menu {
+    cursor: pointer;
+    user-select: none;
 }
 
 .btn-clear {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: .5rem;
-    border-radius: 5px;
-    background-color: rgb(126, 29, 29);
-    border: 1px solid red;
+    cursor: pointer;
     color: var(--clr-white);
 }
