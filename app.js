@@ -18,6 +18,11 @@ const body = document.querySelector('body');
 
 let listaDeCompras = JSON.parse(localStorage.getItem('lista')) || [];
 
+//Função para abrir menu lateral
+function openMenu() {
+    menuList.classList.toggle('active');
+}
+
 // Função para renderizar a lista
 function renderizarLista() {
     list.innerHTML = '';
@@ -76,6 +81,7 @@ function editarItem(event) {
 btnAdd.addEventListener('click', () => {
     adicionarItemNaLista();
     console.log(listaDeCompras);
+    input.focus();
 });
 
 btnClear.addEventListener('click', () => {
@@ -87,8 +93,15 @@ list.addEventListener('click', deletarItem);
 
 list.addEventListener('click', editarItem);
 
-menu.addEventListener('click', () => {
-    menuList.classList.toggle('active');
+menu.addEventListener('click', (event) => {
+    event.stopPropagation();
+    openMenu();
+});
+
+body.addEventListener('click', () => {
+    if (menuList.classList.contains('active')) {
+        menuList.classList.toggle('active');
+    }
 });
 
 // Renderiza a lista inicial ao carregar a página

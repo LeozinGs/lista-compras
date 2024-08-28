@@ -22,25 +22,28 @@
 </head>
 
 <body>
-    <div class="box_container">
-        <h1 class="title">Lista de compras <span class="material-icons shop_cart">shopping_cart</span></h1>
-        <div class="description_container">
-            <br><br>
-            <input type="text" placeholder="Digite seu item" id="input" class="input">
-            <div class="buttons">
-                <button class="btn-add" id="btn-add">Adicionar</button>
+    <main class="main" id="main">
+        <div class="box_container">
+            <h1 class="title">Lista de compras <span class="material-icons shop_cart">shopping_cart</span></h1>
+            <div class="description_container">
+                <br><br>
+                <input type="text" placeholder="Digite seu item" id="input" class="input">
+                <div class="buttons">
+                    <button class="btn-add" id="btn-add">Adicionar</button>
+                </div>
+            </div>
+
+            <div class="list_container">
+                <h2 class="title_list">Itens: <span class="material-icons menu">more_vert</span></h2>
+                <ul class="menu_list">
+                    <li class="menu_item"><a class="btn-clear" id="btn-clear"><span
+                                class="material-icons">delete</span>Limpar lista</a></li>
+                </ul>
+                <ul id="list">
+                </ul>
             </div>
         </div>
-
-        <div class="list_container">
-            <h2 class="title_list">Itens: <span class="material-icons menu">more_vert</span></h2>
-            <ul class="menu_list">
-                <li class="menu_item"><a class="btn-clear" id="btn-clear"><span class="material-icons">delete</span>Limpar lista</a></li>
-            </ul>
-            <ul id="list">
-            </ul>
-        </div>
-    </div>
+    </main>
 </body>
 
 </html>
