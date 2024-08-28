@@ -7,6 +7,7 @@
 //COMO EU MANDO UMA ARRAY PARA O LOCAL STORAGE
 // quando eu fizer o JSON.stringify(listaCriada) a array se tornará "['pao', 'leite', 'manteiga']" novamente para o local storage entender.
 
+//Variáveis e constantes.
 const input = document.getElementById('input');
 const btnAdd = document.getElementById('btn-add');
 const btnClear = document.getElementById('btn-clear');
@@ -78,26 +79,32 @@ function editarItem(event) {
 }
 
 // Eventos
+//Evento de adicionar item na lista.
 btnAdd.addEventListener('click', () => {
     adicionarItemNaLista();
     console.log(listaDeCompras);
     input.focus();
 });
 
+//Evento de limpar lista
 btnClear.addEventListener('click', () => {
     limparListaDeCompras();
     console.log(listaDeCompras);
 });
 
+//Evento de deletar item.
 list.addEventListener('click', deletarItem);
 
+//Evento de editar item.
 list.addEventListener('click', editarItem);
 
+//Evento de abrir menu.
 menu.addEventListener('click', (event) => {
     event.stopPropagation();
     openMenu();
 });
 
+//Evento de click no body para fechar o menu.
 body.addEventListener('click', () => {
     if (menuList.classList.contains('active')) {
         menuList.classList.toggle('active');
