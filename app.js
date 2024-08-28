@@ -14,6 +14,8 @@ const list = document.getElementById('list');
 const menu = document.querySelector('.menu');
 const menuList = document.querySelector('.menu_list');
 
+const body = document.querySelector('body');
+
 let listaDeCompras = JSON.parse(localStorage.getItem('lista')) || [];
 
 // Função para renderizar a lista
@@ -39,55 +41,55 @@ function adicionarItemNaLista() {
     }
 }
 
-    // Limpa a lista de compras
-    function limparListaDeCompras() {
-        localStorage.setItem('lista', JSON.stringify([]));
-        input.value = '';
-        list.innerHTML = '';
-        listaDeCompras = [];
+// Limpa a lista de compras
+function limparListaDeCompras() {
+    localStorage.setItem('lista', JSON.stringify([]));
+    input.value = '';
+    list.innerHTML = '';
+    listaDeCompras = [];
+}
+
+// Deleta o item clicado
+function deletarItem(event) {
+    if (event.target.classList.contains('delete')) {
+        const index = event.target.getAttribute('data-index');
+        listaDeCompras.splice(index, 1);
+        localStorage.setItem('lista', JSON.stringify(listaDeCompras));
+        renderizarLista();
     }
+}
 
-    // Deleta o item clicado
-    function deletarItem(event) {
-        if (event.target.classList.contains('delete')) {
-            const index = event.target.getAttribute('data-index');
-            listaDeCompras.splice(index, 1);
-            localStorage.setItem('lista', JSON.stringify(listaDeCompras));
-            renderizarLista();
-        }
+//Edita o item clicado
+function editarItem(event) {
+    if (event.target.classList.contains('edit')) {
+        const index = event.target.getAttribute('data-index');
+        const novoValor = prompt('Edite seu item.');
+        listaDeCompras.splice(index, 1);
+        listaDeCompras.splice(index, 0, (novoValor.charAt(0).toUpperCase() + novoValor.slice(1)));
+        localStorage.setItem('lista', JSON.stringify(listaDeCompras));
+        renderizarLista();
+
     }
+}
 
-    //Edita o item clicado
-    function editarItem(event) {
-        if (event.target.classList.contains('edit')) {
-            const index = event.target.getAttribute('data-index');
-            const novoValor = prompt('Edite seu item.');
-            listaDeCompras.splice(index, 1);
-            listaDeCompras.splice(index, 0, (novoValor.charAt(0).toUpperCase() + novoValor.slice(1)));
-            localStorage.setItem('lista', JSON.stringify(listaDeCompras));
-            renderizarLista();
+// Eventos
+btnAdd.addEventListener('click', () => {
+    adicionarItemNaLista();
+    console.log(listaDeCompras);
+});
 
-        }
-    }
+btnClear.addEventListener('click', () => {
+    limparListaDeCompras();
+    console.log(listaDeCompras);
+});
 
-    // Eventos
-    btnAdd.addEventListener('click', () => {
-        adicionarItemNaLista();
-        console.log(listaDeCompras);
-    });
+list.addEventListener('click', deletarItem);
 
-    btnClear.addEventListener('click', () => {
-        limparListaDeCompras();
-        console.log(listaDeCompras);
-    });
+list.addEventListener('click', editarItem);
 
-    list.addEventListener('click', deletarItem);
+menu.addEventListener('click', () => {
+    menuList.classList.toggle('active');
+});
 
-    list.addEventListener('click', editarItem);
-
-    menu.addEventListener('click', () => {
-        menuList.classList.toggle('active');
-    });
-
-    // Renderiza a lista inicial ao carregar a página
-    renderizarLista();
+// Renderiza a lista inicial ao carregar a página
+renderizarLista();
