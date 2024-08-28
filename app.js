@@ -21,7 +21,7 @@ function renderizarLista() {
     list.innerHTML = '';
     listaDeCompras.forEach((item, index) => {
         list.innerHTML += `
-        <li class="list_item">${item}<span class="material-icons delete" data-index="${index}">delete</span></li>
+        <li class="list_item">${item}<span class="btn_container"><span class="material-icons edit" data-index="${index}">edit</span><span class="material-icons delete" data-index="${index}">delete</span></span></li>
         <hr>
         `;
     });
@@ -57,6 +57,19 @@ function adicionarItemNaLista() {
         }
     }
 
+    //Edita o item clicado
+    function editarItem(event) {
+        if (event.target.classList.contains('edit')) {
+            const index = event.target.getAttribute('data-index');
+            const novoValor = prompt('Edite seu item.');
+            listaDeCompras.splice(index, 1);
+            listaDeCompras.splice(index, 0, (novoValor.charAt(0).toUpperCase() + novoValor.slice(1)));
+            localStorage.setItem('lista', JSON.stringify(listaDeCompras));
+            renderizarLista();
+
+        }
+    }
+
     // Eventos
     btnAdd.addEventListener('click', () => {
         adicionarItemNaLista();
@@ -69,6 +82,8 @@ function adicionarItemNaLista() {
     });
 
     list.addEventListener('click', deletarItem);
+
+    list.addEventListener('click', editarItem);
 
     menu.addEventListener('click', () => {
         menuList.classList.toggle('active');

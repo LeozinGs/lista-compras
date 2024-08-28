@@ -27,6 +27,10 @@
     font-weight: 500;
 }
 
+.btn_container span {
+    padding: 0 0 0 2rem;
+}
+
 hr {
     border: 1px solid var(--clr-black);
     margin: .5rem .5rem 2rem .5rem;
