@@ -14,6 +14,7 @@ const btnClear = document.getElementById('btn-clear');
 const list = document.getElementById('list');
 const menu = document.querySelector('.menu');
 const menuList = document.querySelector('.menu_list');
+const form = document.querySelector('.form_container');
 
 const body = document.querySelector('body');
 
@@ -79,10 +80,15 @@ function editarItem(event) {
 }
 
 // Eventos
-//Evento de adicionar item na lista.
+//Eventos de adicionar item na lista.
 btnAdd.addEventListener('click', () => {
     adicionarItemNaLista();
     console.log(listaDeCompras);
+    input.focus();
+});
+form.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    adicionarItemNaLista();
     input.focus();
 });
 
