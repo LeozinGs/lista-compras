@@ -75,3 +75,8 @@ hr {
     cursor: pointer;
     color: var(--clr-white);
 }
+
+.edit,
+.delete {
+    cursor: pointer;
+}
