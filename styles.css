@@ -18,6 +18,12 @@ body {
     background: var(--clr-black);
     background-repeat: no-repeat;
     color: var(--clr-text);
+    display: grid;
+    grid-template-columns: 1fr min(65ch, 100%) 1fr;
+}
+
+body>* {
+    grid-column: 2;
 }
 
 .box_container {
@@ -61,11 +67,12 @@ body {
     width: -webkit-fill-available;
 }
 
-.input::placeholder{
+.input::placeholder {
     color: var(--clr-text);
 }
 
-.input, textarea {
+.input,
+textarea {
     color: var(--clr-text);
 }
 
